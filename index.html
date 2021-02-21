@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatumei</title>
+</head>
+<body>
+    <h1 style="margin: 5px;">Please Wait</h1><br/>
+    <script>
+    let requestURL = "https://riyblog.shop/arg/?u=https://api.bitflyer.jp/v1/ticker?product_code=BTC_JPY";
+let request = new XMLHttpRequest();
+let old = 0;
+let mo = 20;
+const dom = document.getElementById("dom");
+const dom2 = document.getElementById("dom2");
+
+dom.innerText = "お待ちください...";
+
+function xhr(){
+    //dom.setAttribute("class","n");
+    request.open("GET", requestURL);
+    request.responseType = "json";
+    request.send();
+    request.onload = function() {
+        ps(request.response);
+    }
+    
+    function ps(res){
+    if(res < 20){
+    alert("物が元の場所に戻されました！！");
+    }
+}
+
+setInterval("xhr()",1000);
+    </script>
+</body>
+</html>
